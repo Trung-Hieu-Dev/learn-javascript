@@ -1,11 +1,14 @@
 //define variable
-const defaultResult = 0;
+const defaultResult = 0; //assign value to variable
 
 let currentResult = defaultResult;
 
-currentResult = (currentResult + 10) * 3 / 2 - 1;
+//define fucntion
+function add() {
+    currentResult = currentResult + userInput.value;
+    outputResult(currentResult);
+}
 
-let calculationDescription =  `(${defaultResult} + 10) * 3 / 2 - 1`; //template string
+addBtn.addEventListener('click', add); //use add -> excute later when the button click
 
-outputResult(currentResult, calculationDescription);
 
