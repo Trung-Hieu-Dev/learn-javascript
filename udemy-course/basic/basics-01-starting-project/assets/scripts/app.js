@@ -1,5 +1,5 @@
 //define variable
-const defaultResult = 10; //assign value to variable
+const defaultResult = 1; //assign value to variable
 
 let currentResult = defaultResult;
 
@@ -8,16 +8,16 @@ function getUserInput() {
 }
 
 function writeResultOutput(operator, enteredNumber) {
-    const calcDescription =  `${currentResult} ${operator} ${enteredNumber}`;
+    const calcDescription =  `${enteredNumber} ${operator} ${currentResult}`;
 
     if (operator === '+') {
-        currentResult = currentResult + enteredNumber;
+        currentResult = enteredNumber + currentResult;
     } else if (operator === '-') {
-        currentResult = currentResult - enteredNumber;
+        currentResult = enteredNumber - currentResult;
     } else if (operator === '*') {
-        currentResult = currentResult * enteredNumber;
+        currentResult = enteredNumber * currentResult;
     } if (operator === '/') {
-        currentResult = currentResult / enteredNumber;
+        currentResult = enteredNumber / currentResult;
     }
 
     outputResult(currentResult, calcDescription);
