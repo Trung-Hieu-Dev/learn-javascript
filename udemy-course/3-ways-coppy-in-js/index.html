@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coppy Data</title>
+</head>
+<body>
+    
+    <script>
+        let person = {
+            name: 'Hieu',
+            age: 35,
+            school: {
+                name: 'ApTech'
+            }
+        };
+
+        // let anotherPerson = person;
+
+        // anotherPerson.name = 'Lan';
+
+        // anotherPerson.school.name = 'Hello'
+
+        // console.log(person.name);
+        // console.log(person.school.name)
+
+        let anotherPerson = {...person};
+        anotherPerson.name = 'Lan';
+        console.log(person.name);
+        console.log(anotherPerson.name);
+
+        anotherPerson.school.name = 'Hello'
+        console.log(person.school.name)
+
+
+    </script>
+</body>
+</html>
