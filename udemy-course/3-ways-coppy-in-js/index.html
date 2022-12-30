@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coppy Data</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <script>
-        let person = {
-            name: 'Hieu',
-            age: 35,
-            school: {
-                name: 'ApTech'
-            }
-        };
+      // NORMAL COPY---------------------------------------
+      const a = { x: 0 };
+      const b = a;
+      b.x = 1; // also updates a.x
 
-        // let anotherPerson = person;
+      // SHALLOW COPY---------------------------------------
+      const a = { x: 0, y: { z: 0 } };
+      const b = { ...a }; // or const b = Object.assign({}, a);
 
-        // anotherPerson.name = 'Lan';
+      b.x = 1; // doesn't update a.x
+      b.y.z = 1; // also updates a.y.z
 
-        // anotherPerson.school.name = 'Hello'
+      // DEEP COPY---------------------------------------
+      const a = { x: 0, y: { z: 0 } };
+      const b = JSON.parse(JSON.stringify(a));
 
-        // console.log(person.name);
-        // console.log(person.school.name)
-
-        let anotherPerson = {...person};
-        anotherPerson.name = 'Lan';
-        console.log(person.name);
-        console.log(anotherPerson.name);
-
-        anotherPerson.school.name = 'Hello'
-        console.log(person.school.name)
-
-
+      b.y.z = 1; // doesn't update a.y.z
     </script>
-</body>
+  </body>
 </html>
