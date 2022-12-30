@@ -11,7 +11,7 @@ const RESULT_COMPUTER_WINS = 'COMPUTER WINS';
 let gameIsRunning = false;
 
 //get player choice
-const getPlayerChoice = function () {
+const getPlayerChoice = () => {
   const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
   if (
     selection !== ROCK &&
@@ -39,7 +39,7 @@ const getComputerChoice = function () {
 }
 
 //get the winner
-const getWinner = function (cChoice, pChoice) {
+const getWinner = (cChoice, pChoice) => {
   if (cChoice == pChoice) {
     return RESULT_DRAW;
   } else if ( 
@@ -53,7 +53,7 @@ const getWinner = function (cChoice, pChoice) {
   }
 }
 
-startGameBtn.addEventListener('click', function () {
+startGameBtn.addEventListener('click', () => {
   if(gameIsRunning) {
     return;
   }
