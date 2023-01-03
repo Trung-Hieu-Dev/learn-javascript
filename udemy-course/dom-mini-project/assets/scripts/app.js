@@ -16,9 +16,10 @@ const updateUi = () => {
     }
 }
 
-const renderNewMovieElement = (title, imageUrl, rating) => {
-    const newMovieElement = document.createElement('li');
-    newMovieElement.className = 'movie-element';
+const renderNewMovieElement = (id, title, imageUrl, rating) => {
+    const newMovieElement = document.createElement('li'); //create new element
+    newMovieElement.className = 'movie-element'; //add css class
+    //add content to new element
     newMovieElement.innerHTML = `
         <div class="movie-element__image">
             <img src="${imageUrl}" alt="${title}">
@@ -27,9 +28,13 @@ const renderNewMovieElement = (title, imageUrl, rating) => {
             <h2>${title}</h2>
             <p>${rating} / 5 stars</p>
         </div>
-    `
-    const listRoot = document.getElementById('movie-list');
-    listRoot.append(newMovieElement);
+    `;
+
+    newMovieElement.addEventListener('click', deleteMovieHandler.bind(null, id));
+
+    const listRoot = document.getElementById('movie-list'); //specify list
+    listRoot.append(newMovieElement); //add new element to list
+
 }
 
 const toggleBackdrop = () => {
@@ -66,17 +71,22 @@ const addMovieHandler = () => {
         alert('Please enter valid values (rating between 1 and 5).')
     }
 
-    const newMovie = {
+    const newMovie = { //create new movie
+        id: Math.random().toString(),
         title: titleValue,
         image: imageUrlValue,
         rating: ratingValue
     };
-    movies.push(newMovie);
+    movies.push(newMovie); //create new data store
     console.log(movies);
+
     toggleMovieModal();
-    clearUserInput();
-    renderNewMovieElement(newMovie.title, newMovie.image, newMovie.rating);
-    updateUi();
+
+    clearUserInput(); //reset input fields
+
+    renderNewMovieElement(newMovie.id ,newMovie.title, newMovie.image, newMovie.rating); //create list
+
+    updateUi(); //update UI
 }
 
 const clearUserInput = () => {
@@ -86,6 +96,19 @@ const clearUserInput = () => {
     for(const usrInput of userInputs) {
         usrInput.value = '';
     }
+}
+
+const deleteMovieHandler = (movieId) => {
+    let movieIndex = 0;
+    for (const movie of movies) {
+        if (movie.id === movieId) {
+            break;
+        }
+        movieIndex++;
+    }
+    movies.slice(movieIndex, 1);
+    const listRoot = document.getElementById('movie-list');
+    listRoot.children[movieIndex].remove();
 }
 
 startAddMovieBtn.addEventListener('click', toggleMovieModal);
