@@ -3,7 +3,8 @@ const searchBtn = document.getElementById('search-btn');
 
 const movies = [];
 
-const renderMovies = () => {
+//render list
+const renderMovies = (filter = '') => {
     const moviesList = document.getElementById('movie-list');
 
     if (moviesList === 0) {
@@ -15,7 +16,9 @@ const renderMovies = () => {
 
     moviesList.innerHTML = '';
 
-    movies.forEach((movie) => {
+    const filteredMovies = !filter ? movies : movies.filter(movie => movie.info.title.includes(filter));
+
+    filteredMovies.forEach((movie) => {
         const movieEl = document.createElement('li');
         // movieEl.textContent = movie.info.title;
         let text = movie.info.title + ' - ';
@@ -58,4 +61,11 @@ const addMovieHandler = () => {
     console.log(movies);
 }
 
+//search movie
+const searchMovieHandler = () => {
+    const filterTerm = document.getElementById('filter-title').value;
+    renderMovies(filterTerm);
+}
+
 addMovieBtn.addEventListener('click', addMovieHandler);
+searchBtn.addEventListener('click', searchMovieHandler);
