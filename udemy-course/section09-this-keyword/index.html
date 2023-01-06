@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This key Word</title>
+  </head>
+  <body>
+    <script>
+      // Examples 01
+      const person1 = {
+        firstName: 'John',
+        lastName: 'Doe',
+        id: 5566,
+        myFunction: function () {
+          return this; //return person1
+        },
+      };
+
+      const anotherPerson = {
+        firstName: 'John',
+        lastName: 'Doe',
+        id: 5566,
+        myFunction: () => {
+          return this; //return window
+        },
+      };
+      console.log(person1.myFunction());
+      console.log(anotherPerson.myFunction());
+
+      // Examples 02
+      const person2 = {
+        name: 'Max',
+        greet() {
+          console.log(this); // refer to admin
+          console.log(this.name);
+        },
+      };
+
+      const admin = { age: 30 };
+
+      admin.greet = person2.greet;
+      admin.greet();
+
+      //Examples 03
+      const person3 = {
+        name: 'Max',
+        greet() {
+          console.log(this); // refer to window object
+          console.log(this.name);
+        },
+      };
+
+      const { greet } = person3;
+      greet();
+    </script>
+  </body>
+</html>
