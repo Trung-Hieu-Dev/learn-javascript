@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getter & Setter</title>
+</head>
+<body>
+    
+
+    <script>
+        const movie = {
+            info: {
+                //create 'title property' by getter & setter
+                set title(val) {
+                    if(val.trim() === '') {
+                        this._title = 'DEFAULT';
+                        return;
+                    }
+                    this._title = val;
+                },
+                get title() {
+                    return this._title; // _title == title -> use _title to mark this is from internal prooerty
+                }
+            }
+        }
+
+        let title = 'Home Alone';
+        movie.info.title = title; //set title value
+
+        console.log(movie.info.title); //get title value
+    </script>
+</body>
+</html>
